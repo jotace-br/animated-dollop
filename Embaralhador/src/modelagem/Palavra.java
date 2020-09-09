@@ -5,12 +5,12 @@ public class Palavra {
 	private int dificuldade;
 	
 	public Palavra(String palavra, int dificuldade) {
-		this.palavra = palavra;
+		this.palavra = palavra.toLowerCase();
 		this.dificuldade = dificuldade;
 	}
 	
 	public Palavra(String palavra) {
-		this.palavra = palavra;
+		this.palavra = palavra.toLowerCase();
 		this.dificuldade = 0;
 	}
 

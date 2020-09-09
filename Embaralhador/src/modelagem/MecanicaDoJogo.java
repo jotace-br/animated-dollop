@@ -6,5 +6,6 @@ public interface MecanicaDoJogo {
 	public boolean jogoTerminou (int tentativas);
 	public String getPalavraEscolhida() throws IOException;
 	public String getPalavraEscolhidaEmbaralhada() throws IOException;
+	public void gerarNovaPalavraAleatoria();
 
 }

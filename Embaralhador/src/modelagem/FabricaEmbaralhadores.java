@@ -1,25 +1,23 @@
 package modelagem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class FabricaEmbaralhadores implements Embaralhador {
-	BancoDePalavras bp;
-	Palavra p;
-	List<String> dica = new ArrayList<>();
+	List<String> palavraEmbaralhada = new ArrayList<>();
 	
-	public BancoDePalavras embaralharDeckDePalavras() { //ok
+	public BancoDePalavras embaralharDeckDePalavras() throws IOException, NullPointerException {
 		Collections.shuffle(BancoDePalavras.bancoDePalavras);
 		return null;
 	}
 
 	@Override
-	public String embalharPalavraEscolhida(String s) throws NullPointerException {
-		//String s = bp.getPalavraAleatoria();
+	public String embalhararPalavraEscolhida(String s) throws NullPointerException {
 	    List<String> letras = Arrays.asList(s.split(""));
-	    dica.addAll(letras);
+	    palavraEmbaralhada.addAll(letras);
 	    Collections.shuffle(letras);
 	    StringBuilder t = new StringBuilder(s.length());
 	    for (String k : letras) {

@@ -1,5 +1,6 @@
 package modelagem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,34 +9,41 @@ public class BancoDePalavras {
 	public static List<Palavra> bancoDePalavras = new ArrayList<>();
 	public static String palavraEscolhida;
 
-	public void adicionaPalavrasNoBanco(Palavra palavraNova) { //ok
-		bancoDePalavras.add(palavraNova);
+	public void adicionaPalavrasNoBanco(Palavra palavraNova) throws IOException {
+		try {
+			bancoDePalavras.add(palavraNova);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 	
-	public void removePalavrasNoBanco(String palavra) { //ok
-		for (Palavra p : bancoDePalavras) {
-			if(p.getPalavra().equals(palavra)) {
+	public void removePalavrasNoBanco(String palavra) throws NullPointerException {
+		try {
 			bancoDePalavras.removeIf(k -> k.getPalavra().equals(palavra));
 			System.out.println("Removido com sucesso!");
-			} else {
-				System.err.println("Palavra não existente no banco de dados.");
-			}
-		}			
+		} catch (Exception e) {
+			System.out.println("Não foi possível remover. Erro: " + e);
+		}		
 	}
 	
-	public String getPalavraAleatoria() { //ok
-		Palavra selecionarPalavra = bancoDePalavras.get(new Random().nextInt(bancoDePalavras.size()));
-		palavraEscolhida =  selecionarPalavra.getPalavra();
+	public String getPalavraAleatoria() throws NullPointerException {
+		try {
+			Palavra selecionarPalavra = bancoDePalavras.get(new Random().nextInt(bancoDePalavras.size()));
+			palavraEscolhida =  selecionarPalavra.getPalavra();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return palavraEscolhida;
 	}
 	
-	public void listarBancoDePalavras() { //ok
+	public void listarBancoDePalavras() {
 		for (int i = 0; i < bancoDePalavras.size(); i++) {
 			System.out.format("Palavra: %s | Dificuldade: %d\n",bancoDePalavras.get(i).getPalavra(),bancoDePalavras.get(i).getDificuldade());
 		}
 	}
 	
-	protected void bancoDePalavrasIniciais() {
+	public void bancoDePalavrasIniciais() {
 		Palavra palavra = new Palavra("papagaio", 3);
 		Palavra palavra2 = new Palavra("cachorro", 2);
 		Palavra palavra3 = new Palavra("whatsapp", 1);
@@ -59,7 +67,7 @@ public class BancoDePalavras {
 	}
 
 	@Override
-	public String toString() { //ok
+	public String toString() {
 		return "BancoDePalavras: \n" + bancoDePalavras;
 	}
 
