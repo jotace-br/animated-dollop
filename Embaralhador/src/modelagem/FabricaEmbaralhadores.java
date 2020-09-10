@@ -23,7 +23,23 @@ public class FabricaEmbaralhadores implements Embaralhador {
 	    for (String k : letras) {
 	        t.append(k);
 	    }
+	    if(t.toString().equalsIgnoreCase(s) && s.length() >= 1) {
+	    	embalhararPalavraEscolhida(t.toString());
+	    } else {
+	    	 return t.toString();
+	    }
+		return t.toString();
+	}
+	
+	/*
+	@Override
+	public String embaralhadorAlternativo(String s) {
+	    List<Character> letters = s.chars().boxed().map(c -> (char) c.intValue()).collect(Collectors.toList());
+	    Collections.shuffle(letters);
+	    StringBuilder t = new StringBuilder(s.length());
+	    letters.forEach(t::append);
 	    return t.toString();
 	}
+	*/
 
 }

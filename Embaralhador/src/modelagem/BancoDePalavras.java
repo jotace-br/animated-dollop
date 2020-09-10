@@ -29,6 +29,7 @@ public class BancoDePalavras {
 	
 	public String getPalavraAleatoria() throws NullPointerException {
 		try {
+			//aleatoriza uma palavra baseando no ArrayList bancoDePalavras
 			Palavra selecionarPalavra = bancoDePalavras.get(new Random().nextInt(bancoDePalavras.size()));
 			palavraEscolhida =  selecionarPalavra.getPalavra();
 		} catch (Exception e) {
@@ -38,6 +39,7 @@ public class BancoDePalavras {
 	}
 	
 	public void listarBancoDePalavras() {
+		//imprime todas as palavras existentes
 		for (int i = 0; i < bancoDePalavras.size(); i++) {
 			System.out.format("Palavra: %s | Dificuldade: %d\n",bancoDePalavras.get(i).getPalavra(),bancoDePalavras.get(i).getDificuldade());
 		}
